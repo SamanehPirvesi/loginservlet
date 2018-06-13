@@ -1,25 +1,25 @@
 
-import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class Profile
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/Profile")
+public class Profile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public Profile() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,27 +28,19 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
+		 PrintWriter writer = response.getWriter();
+         	    
+	        String htmlRespone = "<html>";
+	        htmlRespone += "<header><title>Profile</title></header>"; 
+	        htmlRespone += "<body><h2>Wellcome to your page "+request.getParameter("username") + "<br/></body>";      
+	        htmlRespone += "</html>";
+	       
+	        writer.println(htmlRespone);
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-//		System.out.println("username :"+request.getParameter("username"));
-		String username=request.getParameter("username");
-		String password=request.getParameter("password");
-		if ((username!=null)&&(password!=null)) {
-	
-			response.sendRedirect(request.getContextPath()+"/DoLogin");
-//			
-		}else
-		{
-			response.sendRedirect("index.html");
-		}
-		
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
