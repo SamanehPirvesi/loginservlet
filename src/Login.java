@@ -39,10 +39,12 @@ public class Login extends HttpServlet {
 //		System.out.println("username :"+request.getParameter("username"));
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
-		if ((username!=null)&&(password!=null)) {
-	
-			response.sendRedirect(request.getContextPath()+"/DoLogin");
-//			
+		
+		if ((username.length()!=0)&&(password.length()!=0)) {
+			RequestDispatcher rds= request.getRequestDispatcher("DoLogin");
+			rds.forward(request, response);
+//			response.sendRedirect(request.getContextPath()+"/DoLogin");
+			
 		}else
 		{
 			response.sendRedirect("index.html");

@@ -30,8 +30,7 @@ public class UserService {
 	public boolean isUserCorrect(String username, String password) {
 		boolean result = false;
 		User u = getUserByName(username);
-
-		if (!(u.equals(null)) && (u.getPassword().equals(password))) {
+		if ((u != null) && (u.getPassword().equals(password))) {
 			result = true;
 		}
 		return result;

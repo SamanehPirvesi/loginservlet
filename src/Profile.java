@@ -28,19 +28,19 @@ public class Profile extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 PrintWriter writer = response.getWriter();
-         	    
-	        String htmlRespone = "<html>";
-	        htmlRespone += "<header><title>Profile</title></header>"; 
-	        htmlRespone += "<body><h2>Wellcome to your page "+request.getParameter("username") + "<br/></body>";      
-	        htmlRespone += "</html>";
-	       
-	        writer.println(htmlRespone);
-
+		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		PrintWriter writer = response.getWriter();
+ 	    
+        String htmlRespone = "<html>";
+        htmlRespone += "<header><title>Profile</title></header>"; 
+        htmlRespone += "<body><h2>Wellcome to your page "+request.getParameter("username") + "<br/></body>";      
+        htmlRespone += "</html>";
+       
+        writer.println(htmlRespone);
+
 	}
 
 }

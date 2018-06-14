@@ -35,8 +35,8 @@ public class UserDao {
 	}
 
 	public User getUserByName(String name) {
-		User user = (User) users.values().stream().filter(u -> u.getName().equals(name));
-		return user;
+		User u=users.get(name);
+		return u;
 	}
 
 	public void upDateUserByName(String name, String password) {

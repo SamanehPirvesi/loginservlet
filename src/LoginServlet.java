@@ -1,6 +1,6 @@
-
-
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +15,7 @@ import service.UserService;
 @WebServlet("/DoLogin")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UserService us;
+	private UserService us=new UserService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -29,22 +29,31 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		if (us.isUserCorrect(request.getParameter("username"),request.getParameter("password"))==true) {
-			response.sendRedirect(request.getContextPath()+"/Profile");
-		}
-		else {
-			response.sendRedirect(request.getContextPath()+"index.html");
-		}
-		
+//		System.out.println(request.getParameter("username"));
+//		if (us.isUserCorrect(request.getParameter("username"),request.getParameter("password"))==true) {
+//			response.sendRedirect(request.getContextPath()+"/Profile");
+//		}
+//		else {
+//			response.sendRedirect(request.getContextPath()+"index.html");
+//		}
+//		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	
+		String s=request.getParameter("username");
+		String s1=request.getParameter("password");
+		if (us.isUserCorrect(s,s1)==true) {
+			RequestDispatcher rds= request.getRequestDispatcher("Profile");
+			rds.forward(request, response);
+			}
+		else {
+			response.sendRedirect(request.getContextPath()+"/index.html");
+		}
+		
 	}
 
 }
